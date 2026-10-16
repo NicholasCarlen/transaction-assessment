@@ -13,5 +13,21 @@ datasource db {
 model Status{
   id Int @id
   name String
-  transactions Transactions[]
+  transactions Transaction[]
+}
+
+model Transaction{
+  id Int @id @default(autoincrement())
+  productID String
+  productName String
+  amount String
+  customerName String
+  status Int
+  transactionDate DateTime
+  createBy String
+  createOn DateTime @default(now())
+
+  statusRel Status @relation(fields: [status], references: [id])
+
+
 }
