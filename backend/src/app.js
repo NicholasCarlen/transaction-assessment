@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const transactionRoutes = requires("./routes/transaction.routes");
+const transactionRoutes = require("./routes/transaction.routes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
