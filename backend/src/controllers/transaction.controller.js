@@ -83,7 +83,7 @@ async function updateTransaction(req, res) {
         customerName,
         status: Number(status),
         transactionDate: transactionDate ? new Date(transactionDate) : undefined,
-        createBy,
+        createBy: createBy || 'admin',
       },
     });
 

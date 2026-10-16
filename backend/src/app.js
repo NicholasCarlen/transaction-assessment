@@ -1,15 +1,24 @@
 const express = require('express');
+const http = require('http');
 const cors = require('cors');
-const transactionRoutes = require("./routes/transaction.routes");
+const transactionRoutes = require('./routes/transaction.routes');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/transactions',transactionRoutes);
+app.use('/api/transactions', transactionRoutes);
 
-app.listen(PORT, () =>{
-    console.log('Server listening on port ${PORT}');
-})
+const server = http.createServer(app);
+
+server.listen(PORT, () => {
+  console.log(`Server is actively running on http://localhost:${PORT}`);
+});
+
+server.on('error', (err) => {
+  console.error('Server failed to start:', err);
+});
+
+setInterval(() => {}, 1000 * 60 * 60);
